@@ -1,0 +1,27 @@
+
+  <ng-container *ngIf="taskList.length>0;else noTask">
+    <h2 [ngStyle]="{color: getColor()}" class="text-center odstep">Liczba zadań to wykonania: {{taskList.length}}</h2>
+    <table class="table even">
+        <thead class="thead-dark">
+            <tr>
+              <th scope="col" *ngFor="let th of thList">{{th}}</th>
+            </tr>
+          </thead>
+      <tbody *ngFor="let task of taskList | transchar ;let odd = odd" [ngClass]="{'odd-table' : odd, 'last-table' : taskList.length===1}">
+        <td><li appUnchecked></li></td>
+        <td>{{task.user}} {{task.userLastName}}</td>
+        <td>{{task.name | transTask : '!'}}</td>
+        <td>{{task.created}}</td>
+        <td><button type="button" class="btn btn-danger" (click)="removeTask(task)">Usuń</button></td>
+        <td><button type="button" class="btn btn-success" (click)="doneTask(task)">Zakończone</button></td>
+      </tbody>
+    </table>
+  </ng-container>
+
+  <div [ngClass]="'container'">
+  <ng-template #noTask>
+    <div class="container noTask">
+      <h2>Brak zadań do wykonania</h2>
+    </div>
+  </ng-template>
+</div>

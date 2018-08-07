@@ -1,0 +1,18 @@
+input {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 15px solid rgb(35, 235, 45); /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 15px solid #a94442; /* red */
+}
+
+
+.odstep {
+  margin-top:20px;
+}

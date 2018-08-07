@@ -1,0 +1,44 @@
+<form #taskForm="ngForm">
+  <div [hidden]="taskForm.submitted">
+      <div [ngClass]="'container'">
+      <label class="odstep">Imię</label>
+    <input class="form-control" [(ngModel)]="newTaskUser" placeholder="Imię" id="taskUserName" name="taskUserName"
+      required minlength="2" #taskUserName="ngModel" [pattern]="newTaskUserPattern">
+    <div *ngIf="taskUserName.invalid && (taskUserName.dirty || taskUserName.touched)" class="alert alert-danger">
+      <div *ngIf="taskUserName?.errors.required">
+        Imię jest wymagane.
+      </div>
+      <div *ngIf="taskUserName?.errors.minlength || taskUserName?.errors.pattern">
+         Imię musi zawierać minimum dwie litery.
+      </div>
+    </div>
+    <label class="odstep">Nazwisko:</label>
+    <input class="form-control" [(ngModel)]="newTaskUserLastName" placeholder="Nazwisko" id="taskUserLastName" name="taskUserLastName"
+      required minlength="2" #taskUserLastName="ngModel" [pattern]="newTaskUserPattern">
+    <div *ngIf="taskUserLastName.invalid && (taskUserLastName.dirty || taskUserLastName.touched)" class="alert alert-danger">
+      <div *ngIf="taskUserLastName?.errors.required">
+        Imię jest wymagane.
+      </div>
+      <div *ngIf="taskUserLastName?.errors.minlength || taskUserLastName?.errors.pattern">
+         Nazwisko musi zawierać minimum dwie litery.
+      </div>
+    </div>
+    <label>Polecenie:</label>
+    <input class="form-control" [(ngModel)]="newTask" placeholder="Wpisz polecenie zadania" id="taskUserTask" name="taskUserTask"
+      required minlength="4" #taskUserTask="ngModel">
+    <div *ngIf="taskUserTask.invalid && (taskUserTask.dirty || taskUserTask.touched)" class="alert alert-danger">
+      <div *ngIf="taskUserTask?.errors.required">
+        Polecenie jest wymagane.
+      </div>
+      <div *ngIf="taskUserTask?.errors.minlength || taskUserTask?.errors.pattern">
+        Polecenie musi zawierać minimum cztery znaki.
+      </div>
+    </div>
+    <div class="form-group">
+        <label>Uwagi:</label>
+      <input class="form-control" [(ngModel)]="newTaskBody" name="newTaskBody" rows="5" id="comment" placeholder="Wpisz uwagi do polecenia (Nieobowiązkowe)">
+    </div>
+    <button type="submit" class="btn btn-success text-center" [disabled]="taskForm.invalid" (click)="addTask(); taskForm.resetForm({})">Dodaj Zadanie</button>
+  </div>
+  </div>
+</form>

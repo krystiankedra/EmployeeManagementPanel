@@ -1,0 +1,28 @@
+input {
+  margin-top:10px;
+  margin-bottom: 30px;
+}
+
+button {
+  margin-top: 10px;
+  margin-bottom:10px;
+}
+
+.parent {
+  width:30%;
+  float:left;
+  margin:10px;
+}
+
+.child {
+  clear: both;
+  margin:20px;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 15px solid rgb(35, 235, 45); /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 15px solid #a94442; /* red */
+}

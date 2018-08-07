@@ -1,0 +1,85 @@
+<div class="container odstep">
+    <h2>Lista użytkownikow: {{userList.length}}</h2>
+    <div class="odstep text-center">
+        <button class="btn btn-danger" (click)="save()">Zapisz do bazy</button>
+      </div>
+      <div class="odstep text-center">
+          <h4>Wyszukaj:</h4> <input  placeholder="Wyszukaj" class="form-control" [(ngModel)]="searchText">
+      </div>
+    <table class="table odstep">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Office</th>
+          <th>Usuń</th>
+          <th>Zobacz dane</th>
+          <th>Edytuj dane</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let user of userList | filter: searchText">
+        <tr>
+          <td>{{user.firstname | transTask}}</td>
+          <td>{{user.lastname | transTask}}</td>
+          <td>{{user.office | transTask}}</td>
+          <td><button class="btn btn-danger" (click)="removeUserC(user)">Usuń</button></td>
+          <td><button class="btn btn-success" (click)="open(content,user)">Pokaż dane</button></td>
+          <td><button class="btn btn-primary" (click)="change(content2,user)">Edytuj</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <ng-template #content let-ca="close('a')" let-da="dismiss('d')">
+      <div class="modal-header">
+        <h4 class="modal-title">Dane uzytkownika</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d(da)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="selected">
+          <ul class="list-group">
+              <li class="list-group-item">Imię: {{selected.firstname | transTask}}</li>
+              <li class="list-group-item">Nazwisko: {{selected.lastname | transTask}}</li>
+              <li class="list-group-item">Wiek: {{selected.age | transTask}}</li>
+              <li class="list-group-item">Stanowisko: {{selected.office | transTask}}</li>
+              <li class="list-group-item">Kod pocztowy: {{selected.postalCode | transTask}}</li>
+              <li class="list-group-item">Miasto: {{selected.city | transTask}}</li>
+              <li class="list-group-item">Kraj: {{selected.country | transTask}}</li>
+              <li class="list-group-item">Pesel: {{selected.pesel | transTask}}</li>
+            </ul>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c(ca)">Close</button>
+      </div>
+    </ng-template>
+
+    <ng-template #content2 let-ca="close('a')" let-da="dismiss('d')">
+      <div class="modal-header">
+        <h4 class="modal-title">Dane uzytkownika</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d(da)">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div *ngIf="selected">
+          <ul class="list-group">
+            <li class="list-group-item">Imię: <input type=text [(ngModel)]="selected.firstname"></li>
+            <li class="list-group-item">Nazwisko: <input type=text [(ngModel)]="selected.lastname"></li>
+            <li class="list-group-item">Wiek: <input type=text [(ngModel)]="selected.age"></li>
+            <li class="list-group-item">Stanowisko: <input type=text [(ngModel)]="selected.office"></li>
+            <li class="list-group-item">Kod pocztowy: <input type=text [(ngModel)]="selected.postalCode"></li>
+            <li class="list-group-item">Miasto: <input type=text [(ngModel)]="selected.city"></li>
+            <li class="list-group-item">Kraj: <input type=text [(ngModel)]="selected.country"></li>
+            <li class="list-group-item">Pesel: <input type=text [(ngModel)]="selected.pesel"></li>
+            </ul>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="c(ca)">Zapisz</button>
+      </div>
+    </ng-template>
+

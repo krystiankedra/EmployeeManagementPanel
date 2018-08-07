@@ -1,0 +1,11 @@
+
+<div class="login" *ngIf="showLogin">
+<form (submit)="loginUser($event)">
+		<label>Username</label>
+		<input class="form-control" type="text">
+		<label>Password</label>
+		<input class="form-control" type="password">
+    <button class="btn btn-primary" type="submit">Zaloguj</button>
+</form>
+</div>
+

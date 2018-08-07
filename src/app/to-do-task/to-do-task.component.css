@@ -1,0 +1,44 @@
+table {
+    background: lightgray;
+}
+
+.odd-table {
+    background: rgb(174, 174, 240);
+}
+
+.last-table {
+    background: rgb(242, 243, 177);
+}
+
+.noTask {
+  margin: auto;
+  margin-top:60px;
+  font-family: sans-serif;
+  border: 2px dashed grey;
+  text-align: center;
+}
+
+.odstep {
+  margin:30px;
+  }
+
+.odd-table {
+  background: aquamarine;
+  font-weight: bold;
+}
+
+.last-table {
+  background: rgba(172, 162, 78, 0.479);
+  color: white;
+  font-weight: bold;
+}
+
+.even {
+  background: rgb(185, 168, 151);
+  font-weight: bold;
+}
+
+noTask {
+  text-align: center;
+}
+

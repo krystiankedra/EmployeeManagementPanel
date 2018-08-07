@@ -1,0 +1,51 @@
+<div class="container odstep">
+ <h2>Wykonane Zadania: {{doneList.length}}</h2>
+      <div class="text-center odstep">
+      <button class="btn btn-danger" (click)="save()">Zapisz do bazy</button>
+      <div class="text-center odstep">
+          <h4>Wyszukaj:</h4>
+          <input  placeholder="Wyszukaj" class="form-control" [(ngModel)]="searchText">
+        </div>
+        </div>
+      </div>
+  <table class="table">
+    <thead class="thead">
+      <tr>
+        <th *ngFor="let th of thList">
+          {{th}}
+        </th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let task of doneList | filter: searchText">
+      <tr>
+        <td><li appChecked ></li></td>
+        <td>{{task.user}} {{task.userLastName}}</td>
+        <td>{{task.name | transTask : ' - super!'}}</td>
+        <td>{{task.created}}</td>
+        <td>{{task.end}}</td>
+        <td><button class="btn btn-success" (click)="open(content,task)">Pokaż uwagi</button></td>
+        <td><button class="btn btn-danger" (click)="removeTask(task)">Usuń</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+
+<ng-template #content let-ca="close('a')" let-da="dismiss('d')">
+  <div class="modal-header">
+    <h4 class="modal-title">Uwagi do {{selected.name}} :</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d(da)">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div *ngIf="selected">
+      <ul class="list-group text-justify">
+            {{selected.body}}
+        </ul>
+      </div>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c(ca)">Close</button>
+  </div>
+</ng-template>
+

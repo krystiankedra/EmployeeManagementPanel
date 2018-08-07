@@ -1,0 +1,111 @@
+<form #userForm="ngForm">
+  <div [hidden]="userForm.submitted">
+<div [ngClass]="'container'">
+
+  <div [ngClass]="'parent'">
+  <label>Imie: </label>
+    <input class="form-control" [(ngModel)]="newUserName" placeholder="Wpisz imię" id="imieUser" name="imieUser"  required minlength="2" #imieUser="ngModel" [pattern]="namePattern">
+    <div *ngIf="imieUser.invalid && (imieUser.dirty || imieUser.touched)" class="alert alert-info">
+      <div *ngIf="imieUser?.errors.required">
+        Imię jest wymagane.
+      </div>
+      <div *ngIf="imieUser?.errors.minlength || imieUser?.errors.pattern">
+        Imię musi zawierać minimum dwie litery. Nie możesz używać cyfr.
+      </div>
+    </div>
+  </div>
+
+  <div [ngClass]="'parent'">
+    <label>Nazwisko: </label>
+    <input class="form-control" [(ngModel)]="newUserName2" placeholder="Wpisz Nazwisko"  id="nazwiskoUser" name="nazwiskoUser"  required minlength="2" #nazwiskoUser="ngModel" [pattern]="lastNamePattern">
+    <div *ngIf="nazwiskoUser.invalid && (nazwiskoUser.dirty || nazwiskoUser.touched)" class="alert alert-info">
+      <div *ngIf="nazwiskoUser?.errors.required">
+        Nazwisko jest wymagane.
+      </div>
+      <div *ngIf="nazwiskoUser?.errors.minlength || nazwiskoUser?.errors.pattern">
+          Naziwsko musi zawierać minimum dwie litery. Nie możesz używać cyfr.
+      </div>
+    </div>
+  </div>
+
+  <div [ngClass]="'parent'">
+    <label>Wiek: </label>
+    <input class="form-control" [(ngModel)]="newUserAge" placeholder="Podaj wiek"   id="wiekUser" name="wiekUser"  required minlength="2" maxlength="3" #wiekUser="ngModel" [pattern]="agePattern">
+    <div *ngIf="wiekUser.invalid && (wiekUser.dirty || wiekUser.touched)" class="alert alert-info">
+      <div *ngIf="wiekUser?.errors.required">
+        Wiek jest wymagany.
+      </div>
+      <div *ngIf="wiekUser?.errors.minlength || wiekUser?.errors.pattern">
+          Wiek musi zawierać od dwoch do trzech cyfr. Nie możesz używać liter.
+      </div>
+    </div>
+  </div>
+
+  <div [ngClass]="'parent'">
+    <label>Stanowisko: </label>
+    <input class="form-control" [(ngModel)]="newUserOffice" placeholder="Stanowisko"   id="stanowiskoUser" name="stanowiskoUser"  required minlength="2" #stanowiskoUser="ngModel" [pattern]="officePattern">
+    <div *ngIf="stanowiskoUser.invalid && (stanowiskoUser.dirty || stanowiskoUser.touched)" class="alert alert-info">
+      <div *ngIf="stanowiskoUser?.errors.required">
+        Stanowisko jest wymagane.
+      </div>
+      <div *ngIf="stanowiskoUser?.errors.minlength || stanowiskoUser?.errors.pattern">
+          Stanowisko musi zawierać przynajmniej dwie litery. Nie możesz używać cyfr.
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="'parent'">
+    <label>Kod pocztowy: </label>
+    <input class="form-control" [(ngModel)]="newUserPostalCode" placeholder="Kod pocztowy" id="kodPocztowyUser" name="kodPocztowyUser" required minlength="6" maxlength="6" #kodPocztowyUser="ngModel" [pattern]="postalCodePattern">
+    <div *ngIf="kodPocztowyUser.invalid && (kodPocztowyUser.dirty || kodPocztowyUser.touched)" class="alert alert-info">
+      <div *ngIf="kodPocztowyUser?.errors.required">
+        Kod pocztowy jest wymagany.
+      </div>
+      <div *ngIf="kodPocztowyUser?.errors.minlength || kodPocztowyUser?.errors.pattern">
+        Kod pocztowy powinien zawierać 6 znakow. Przykład: 49-300.
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="'parent'">
+    <label>Miasto: </label>
+    <input class="form-control" [(ngModel)]="newUserCity" placeholder="Miasto" id="miastoUser" name="miastoUser" required required minlength="2" #miastoUser="ngModel" [pattern]="cityPattern">
+    <div *ngIf="miastoUser.invalid && (miastoUser.dirty || miastoUser.touched)" class="alert alert-info">
+      <div *ngIf="miastoUser?.errors.required">
+        Miasto jest wymagane.
+      </div>
+      <div *ngIf="miastoUser?.errors.minlength || miastoUser?.errors.pattern">
+          Miasto musi zawierać przynajmniej dwa znaki.
+      </div>
+    </div>
+  </div>
+  <div [ngClass]="'parent'">
+    <label>Kraj: </label>
+    <input class="form-control" [(ngModel)]="newUserCountry" placeholder="Kraj"  id="krajUser" name="krajUser" required minlength="2" #krajUser="ngModel" [pattern]="countryPattern">
+    <div *ngIf="krajUser.invalid && (krajUser.dirty || krajUser.touched)" class="alert alert-info">
+      <div *ngIf="krajUser?.errors.required">
+        Kraj jest wymagany.
+      </div>
+      <div *ngIf="krajUser?.errors.minlength || krajUser?.errors.pattern">
+        Kraj musi zawierać przynajmniej dwie litery. Nie możesz używać cyfr.
+     </div>
+    </div>
+  </div>
+  <div [ngClass]="'parent'">
+    <label>Pesel: </label>
+    <input class="form-control" [(ngModel)]="newUserPesel" placeholder="Pesel"  id="peselUser" name="peselUser" required minlength="11" maxlength="11" #peselUser="ngModel" [pattern]="peselPattern">
+    <div *ngIf="peselUser.invalid && (peselUser.dirty || peselUser.touched)" class="alert alert-info">
+      <div *ngIf="peselUser?.errors.required">
+        Pesel jest wymagany.
+      </div>
+      <div *ngIf="peselUser?.errors.minlength || peselUser?.errors.pattern">
+          Pesel musi zawierać jedenascie cyfr. Nie możesz używać liter.
+       </div>
+    </div>
+  </div>
+  <div [ngClass]="'parent child'">
+    <label></label>
+    <button type="submit" class="btn btn-success" [disabled]="userForm.invalid" (click)="addUser(); userForm.resetForm({})">Dodaj Użytkownika</button>
+  </div>
+  </div>
+</div>
+</form>
+
