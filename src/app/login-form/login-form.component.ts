@@ -32,7 +32,7 @@ export class LoginFormComponent implements OnInit {
     const password = e.target.elements[1].value;
     const list = this.userListObs.getValue();
     const found = list.some(element => {
-      return element.pesel === password && element.lastname === username;
+      return element.password === password && element.lastname === username;
     });
 
     console.log(list);

@@ -101,6 +101,20 @@
        </div>
     </div>
   </div>
+
+  <div [ngClass]="'parent'">
+    <label>Password: </label>
+    <input class="form-control" type="password" [(ngModel)]="newUserPassword" placeholder="Password"  id="passwordUser" name="passwordUser" required minlength="4" maxlength="20" #passwordUser="ngModel">
+    <div *ngIf="passwordUser.invalid && (passwordUser.dirty || passwordUser.touched)" class="alert alert-info">
+      <div *ngIf="passwordUser?.errors.required">
+        Hasło jest wymagane.
+      </div>
+      <div *ngIf="passwordUser?.errors.minlength || passwordUser?.errors.pattern">
+          Hasło musi zawierać minimum 1 litere.
+       </div>
+    </div>
+  </div>
+
   <div [ngClass]="'parent child'">
     <label></label>
     <button type="submit" class="btn btn-success" [disabled]="userForm.invalid" (click)="addUser(); userForm.resetForm({})">Dodaj Użytkownika</button>

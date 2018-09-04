@@ -27,6 +27,7 @@ export class AdduserComponent implements OnInit {
   newUserCity: string;
   newUserCountry: string;
   newUserPesel: string;
+  newUserPassword: string;
 
   constructor(private userService: UsersService) { }
 
@@ -36,7 +37,7 @@ export class AdduserComponent implements OnInit {
   addUser() {
     const user: User = ({ firstname: this.newUserName, lastname: this.newUserName2,
        age: this.newUserAge, office: this.newUserOffice, postalCode: this.newUserPostalCode,
-       city: this.newUserCity, country: this.newUserCountry , pesel: this.newUserPesel });
+       city: this.newUserCity, country: this.newUserCountry , pesel: this.newUserPesel, password: this.newUserPassword });
     this.userService.addUser(user);
     this.newUserName = '';
     this.newUserName2 = '';
@@ -46,6 +47,7 @@ export class AdduserComponent implements OnInit {
     this.newUserCity = '';
     this.newUserCountry = '';
     this.newUserPesel = '' ;
+    this.newUserPassword = '';
   }
 
 }

@@ -8,4 +8,5 @@ export interface User {
     city: string;
     country: string;
     pesel: string;
+    password: string;
 }
