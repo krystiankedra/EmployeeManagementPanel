@@ -24,6 +24,7 @@ export class LoginFormComponent implements OnInit {
 
 
   ngOnInit() {
+
   }
 
   loginUser(e) {
@@ -35,7 +36,7 @@ export class LoginFormComponent implements OnInit {
       return element.password === password && element.lastname === username;
     });
 
-    console.log(list);
+    console.log(list)
     if (found) {
       this.loginService.setUserLoggenIn();
       this.router.navigate(['add-task']);
@@ -46,5 +47,4 @@ export class LoginFormComponent implements OnInit {
       this.showLogin = true;
     }
   }
-
 }
